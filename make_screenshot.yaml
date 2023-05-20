@@ -1,0 +1,13 @@
+#
+# Home Assistant Script to take Screenshot of your Camera Entity.
+#
+
+alias: Kamera Haustür (Foto)
+sequence:
+  - service: camera.snapshot
+    data:
+      filename: /config/www/assets/img/hauseingang-snap.jpg
+    target:
+      device_id: ...
+mode: single
+icon: mdi:camera
