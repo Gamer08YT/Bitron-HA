@@ -7,6 +7,7 @@ A level converter is needed to isolate the 17V from the 3.3V GPIO.
 
 ## Phone:
 The Circuit is under the Wemos Board.
+
 ![image](https://github.com/Gamer08YT/Bitron-HA/assets/31771657/a06fe9be-ba74-4ada-ae5c-a5b7cbf23d8f)
 
 ## Circuit:
