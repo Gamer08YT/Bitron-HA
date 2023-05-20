@@ -1,0 +1,66 @@
+#
+# Home Assistant Script to Broadcast when somebody rings.
+#
+# Notification Implementation for:
+# - Windows PC / MacOS (via HASS.Agent)
+# - Android
+# - Android TV
+# - TV
+#
+
+alias: Klingel
+sequence:
+  - service: script.kamera_haustur_foto
+    data: {}
+  - service: notify.mobile_app_iphone_von_jan
+    data:
+      title: Haustür
+      message: Es hat geklingelt!
+      data:
+        entity_id: camera.hauseingang_high
+        url: /lovelace-uberwachung/0
+        push:
+          category: camera
+          sound:
+            name: default
+            critical: 1
+            volume: 0
+  - service: notify.mobile_app_ags2_l09
+    data:
+      title: Haustür
+      message: Es hat geklingelt!
+      data:
+        entity_id: camera.hauseingang_high
+        url: /lovelace-uberwachung/0
+        ttl: 0
+        priority: high
+        tts_text: The house is on fire and the cat's stuck in the dryer!
+        channel: alarm_stream
+        push:
+          category: camera
+          sound:
+            name: default
+            critical: 1
+            volume: 0
+  - service: notify.android_tv_fire_tv
+    data:
+      title: Haustür
+      message: Es hat geklingelt!
+      data:
+        duration: 10
+        fontsize: small
+        position: center
+        color: red
+        image:
+          path: /config/www/assets/img/hauseingang-snap.jpg
+  - service: notify.jan_workstation
+    data:
+      title: Haustür
+      message: Es hat geklingelt!
+      data:
+        image: https://XXXXXXXXXXXXXX/local/assets/img/hauseingang-snap.jpg
+        actions:
+          - action: turoffner
+            title: Tür öffnen
+icon: mdi:door
+mode: single
